@@ -21,9 +21,10 @@ namespace DemoApp.Migrations
 
             modelBuilder.Entity("DemoApp.Models.Depot", b =>
                 {
-                    b.Property<Guid>("DepotId")
+                    b.Property<int>("DepotId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.HasKey("DepotId");
 
@@ -39,6 +40,10 @@ namespace DemoApp.Migrations
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("MedicationUnits")
+                        .HasColumnType("nvarchar(250)")
+                        .HasMaxLength(6);
 
                     b.Property<string>("SiteDoctor")
                         .HasColumnType("nvarchar(250)");
@@ -62,28 +67,6 @@ namespace DemoApp.Migrations
                     b.HasKey("SubjectId");
 
                     b.ToTable("Subjects");
-                });
-
-            modelBuilder.Entity("DemoApp.Models.Unit", b =>
-                {
-                    b.Property<string>("Data")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int?>("SiteId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Data");
-
-                    b.HasIndex("SiteId");
-
-                    b.ToTable("Unit");
-                });
-
-            modelBuilder.Entity("DemoApp.Models.Unit", b =>
-                {
-                    b.HasOne("DemoApp.Models.Site", null)
-                        .WithMany("MedicationUnits")
-                        .HasForeignKey("SiteId");
                 });
 #pragma warning restore 612, 618
         }

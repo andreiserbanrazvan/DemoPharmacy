@@ -9,8 +9,8 @@ namespace DemoApp.Models
 {
     public class Depot
     {
-        [Key]
-      public Guid DepotId { get; set; }
+      [Key]
+      public int DepotId { get; set; }
         
     }
 }

@@ -26,8 +26,11 @@ namespace DemoApp.Models
         [Column(TypeName = "nvarchar(250)")]
         [DisplayName("Site Doctor")]
         public string SiteDoctor { get; set; }
-        
+
+        [Column(TypeName = "nvarchar(250)")]
+        [RegularExpression("(\\d+)(,\\s*\\d+)*")]
+        [StringLength(6, MinimumLength = 6)]
         [DisplayName("Medication Units")]
-        public ICollection<Unit> MedicationUnits { get; set; }
+        public string MedicationUnits { get; set; }
     }
 }
