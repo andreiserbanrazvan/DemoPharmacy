@@ -1,9 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace DemoApp.Models
 {
@@ -18,7 +13,6 @@ namespace DemoApp.Models
         public DbSet<Depot> Depots { get; set; }
         public DbSet<Subject> Subjects { get; set; }
 
-     
     }
 
 }

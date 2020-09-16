@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace DemoApp.Models
 {
@@ -16,7 +12,7 @@ namespace DemoApp.Models
         [Column(TypeName = "nvarchar(5)")]
         [RegularExpression("^[0-9]*$")]
         [StringLength(5,MinimumLength=5)]
-        [Required(ErrorMessage = "This field is required")]
+        [Required(ErrorMessage = "Site number field is required !")]
         [DisplayName("Site Number")]
         public string SiteNumber { get; set; }
 
@@ -28,8 +24,8 @@ namespace DemoApp.Models
         public string SiteDoctor { get; set; }
 
         [Column(TypeName = "nvarchar(250)")]
-        [RegularExpression("(\\d+)(,\\s*\\d+)*")]
-        [StringLength(6, MinimumLength = 6)]
+        [RegularExpression("^(([0-9]+,)*[0-9]+){6,6}$")]
+        [StringLength(600, MinimumLength = 6)]
         [DisplayName("Medication Units")]
         public string MedicationUnits { get; set; }
     }
