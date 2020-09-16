@@ -27,11 +27,11 @@ namespace DemoApp
         {
             services.AddControllersWithViews();
 
+            services.AddDbContext<PharmacyContext>(options =>
+            options.UseSqlServer(Configuration
+            .GetConnectionString("DevConnection")
+            ));
 
-            services.AddDbContext<EmployeeContext>(options =>
-               options.UseSqlServer(Configuration
-               .GetConnectionString("DevConnection")
-               ));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,7 +58,7 @@ namespace DemoApp
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Employees}/{action=Index}/{id?}");
+                    pattern: "{controller=Sites}/{action=Index}/{id?}");
             });
         }
     }
